@@ -7,8 +7,10 @@
  */
 
 /**
+ * Custom Modules
+ */
+import './Singleton_Pattern/singleton';
+
+/**
  * Main code
  */
-
- const test = 'test';
- console.log(test);
