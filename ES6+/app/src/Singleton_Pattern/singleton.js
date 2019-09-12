@@ -1,5 +1,21 @@
+// Importing styles, templates and other helper modules
 import './singleton.scss';
+import singletonTemplate from './singleton-template';
 
+// HTML Custom element implementation
+class SingletonTemplate extends HTMLElement {
+    constructor() {
+        super();
+
+        this.innerHTML = singletonTemplate;
+    }
+}
+
+customElements.define('singleton-template', SingletonTemplate);
+document.querySelector('.wrapper').appendChild(new SingletonTemplate());
+
+
+// Code of Design Pattern
 class Singleton {
     // eslint-disable-line no-unused-vars
 
@@ -10,6 +26,8 @@ class Singleton {
 
         this.userInfo = userData;
 
+        // Since protected classes cannot be imitated in these classes,
+        // we store the instance implementation in a static property
         Singleton.instance = this;
 
         return this;
@@ -37,6 +55,5 @@ btn.onclick = function (e) {
         userProfession: document.querySelector('.input-profession').value
     };
     newUser = new Singleton(userData);
-    const newUser2 = new Singleton();
-    console.log(newUser2);
+    console.log(newUser);
 };
