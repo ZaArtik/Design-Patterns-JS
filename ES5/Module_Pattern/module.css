@@ -119,7 +119,8 @@ ul, li  {
 /* Basket */
 .basket {
     position: fixed;
-    width: 350px;
+
+    width: 400px;
     height: 100%;
     background: #fff;
     box-shadow: 0px 0px 10px -2px rgba(0,0,0,0.75);
@@ -148,9 +149,106 @@ ul, li  {
     background-size: 35px;
 }
 
-.basket__info-wrapper {
+.basket__product-list-wrapper {
     width: 100%;
     height: 100%;
     padding: 25px;
+}
+
+.basket__product-list-title {
+    margin-bottom: 40px;
+}
+
+.basket__product-item {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 10px 0px;
+    border: 1px solid #cacaca;
+    margin-bottom: 15px;
+}
+
+.basket__product-item:last-child {
+    margin-bottom: 0;
+}
+
+.basket__product-image-wrapper {
+    width: 32%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.basket__image {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.basket__product-info-wrapper {
+    width: 50%;
+    margin-left: 19px;
+}
+
+.basket__product-caption {
     text-transform: uppercase;
+}
+
+.basket__product-ingridients {
+    margin-bottom: 10px;
+    font-size: 12px;
+    color: gray;
+}
+
+.basket__price-info-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.basket__product-price {
+    font-size: 20px;
+    font-weight: bold;
+    color: #A2CE36;
+}
+
+.basket__product-controller-wrapper {
+    display: flex;
+    align-items: center;
+    margin-left: 15px;
+}
+
+.basket__remove-product, .basket__add-product {
+    width: 20px;
+    height: 20px;
+    background: #fff;
+    box-shadow: 0px 0px 7px -2px rgba(0,0,0,0.75);
+    border: 0;
+    border-radius: 50%;
+    outline: none;
+    cursor: pointer;
+    transition: 250ms;
+}
+
+.basket__remove-product:hover, .basket__add-product:hover {
+    transform: scale(1.1);
+}
+
+.basket__product-quantity { 
+    font-size: 14px;
+    padding: 0 10px;
+}
+
+.basket__delete-product {
+    width: 10%;
+    background: url('assets/delete-icon.png') no-repeat 50% 50%;
+    background-size: 30px;
+    margin-left: 10px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    transition: 250ms;
+}
+
+.basket__delete-product:hover {
+    background: url('assets/delete-icon-hover.png') no-repeat 50% 50%;
+    background-size: 30px
 }
