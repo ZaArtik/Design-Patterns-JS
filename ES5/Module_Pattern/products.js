@@ -5,7 +5,8 @@ var productsData = [
         type: 'Fruit',
         price: '0.75',
         ingridients: 'orange',
-        imgUrl: 'assets/orange.png'
+        imgUrl: 'assets/orange.png',
+        inBasket: 0
     },
     {
         id: 1,
@@ -13,7 +14,8 @@ var productsData = [
         type: 'Fish',
         price: '9.75',
         ingridients: 'red fish, salad, black olives, lime',
-        imgUrl: 'assets/fish.png'
+        imgUrl: 'assets/fish.png',
+        inBasket: 0
     },
     {
         id: 2,
@@ -21,7 +23,8 @@ var productsData = [
         type: 'Morning meal',
         price: '3.50',
         ingridients: 'pancakes, raspberry, blackberry, strawberry',
-        imgUrl: 'assets/pancake.png'
+        imgUrl: 'assets/pancake.png',
+        inBasket: 0
     },
     {
         id: 3,
@@ -29,7 +32,8 @@ var productsData = [
         type: 'Meat',
         price: '19.35',
         ingridients: 'turkey, salad, tomatoes',
-        imgUrl: 'assets/turkey.png'
+        imgUrl: 'assets/turkey.png',
+        inBasket: 0
     },
     {
         id: 4,
@@ -37,7 +41,8 @@ var productsData = [
         type: 'Morning meal',
         price: '3.90',
         ingridients: 'oatmeal, grape, nuts',
-        imgUrl: 'assets/oatmeal.png'
+        imgUrl: 'assets/oatmeal.png',
+        inBasket: 0
     },
     {
         id: 5,
@@ -45,6 +50,7 @@ var productsData = [
         type: 'Morning meal',
         price: '3.00',
         ingridients: 'porridge, sauce',
-        imgUrl: 'assets/porridge.png'
+        imgUrl: 'assets/porridge.png',
+        inBasket: 0
     }
 ];

@@ -23,6 +23,22 @@
     background-color: #eee;
 }
 
+
+/* Notify */
+
+.notify {
+    position: absolute;
+        left: 50%;
+        top: 50px;
+    transition: 700ms;
+}
+
+.notify__info-wrapper {
+    padding: 15px 30px;
+    transition: 700ms;
+}
+
+
 /* Global styles */
 * {
     box-sizing: border-box;
@@ -52,6 +68,7 @@ ul, li  {
 }
 
 .wrapper {
+    position: relative;
     width: 100%;
     height: 100%;
 }
@@ -246,6 +263,7 @@ ul, li  {
 .basket__price-info-wrapper {
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 
 .basket__product-price {
@@ -258,6 +276,7 @@ ul, li  {
     display: flex;
     align-items: center;
     margin-left: 15px;
+    color: gray;
 }
 
 .basket__remove-product, .basket__add-product {
@@ -270,6 +289,7 @@ ul, li  {
     outline: none;
     cursor: pointer;
     transition: 250ms;
+    color: gray;
 }
 
 .basket__remove-product:hover, .basket__add-product:hover {
