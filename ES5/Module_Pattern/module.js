@@ -5,6 +5,7 @@
  * info - this is an object with state of module, needed for optimize and manage the module;
  * helperElements - this is an object with elements or methods from other modules, which well be
  * used in this module
+ * I use the localStorage to imitate AJAX call
  */
 
 // NOTIFY MODULE
@@ -13,7 +14,9 @@ var notify = (function() {
         insertContainer: document.querySelector('.wrapper')
     };
     var info = {
-        notifyActive: false
+        notifyActive: false,
+        currentNotifyEl: null,
+        hideTimeout: null
     };
 
     return {
@@ -48,11 +51,18 @@ var notify = (function() {
          * @param {Object} options Obejct with template and notify element options
          */
         showNotify: function(options) {
+            var self = this;
+
             if (info.notifyActive === true) {
+                clearTimeout(info.hideTimeout);
+                info.hideTimeout = setTimeout(function() {
+                    info.currentNotifyEl.style.opacity = 0;
+                    self.hideNotify(info.currentNotifyEl);
+                }, 2000);
+
                 return false;
             }
 
-            var self = this;
             var template = options.template || '',
                 color = options.color || '#000',
                 backgroundColor =
@@ -70,10 +80,11 @@ var notify = (function() {
             config.insertContainer.appendChild(notifyEl);
 
             setTimeout(function() {
+                info.currentNotifyEl = notifyEl;
                 notifyEl.style.opacity = 1;
             }, 0);
 
-            setTimeout(function() {
+            info.hideTimeout = setTimeout(function() {
                 notifyEl.style.opacity = 0;
                 self.hideNotify(notifyEl);
             }, 2000);
@@ -133,13 +144,15 @@ var basket = (function() {
 
             if (basket.length === 0) {
                 // Some AJAX call to fill the basket of elements
-                productsData.forEach(function(el) {
-                    if (el.inBasket > 0) {
+                if (localStorage.getItem('basket')) {
+                    var basketData = JSON.parse(localStorage.getItem('basket'));
+                    basketData.forEach(function(el) {
                         basket.push(el);
-                    }
-                });
+                    });
+                }
             }
 
+            // Button that is responsible for the basket opening
             config.openBtn.onclick = function() {
                 if (info.opened) {
                     info.opened = false;
@@ -156,11 +169,21 @@ var basket = (function() {
                     }
                 }
             };
+
+            // Close basket if user click on other place
+            document.querySelector('.wrapper').onclick = function(event) {
+                if (info.opened === true) {
+                    var target = event.target;
+                    if (!target.closest('.basket__product-item') && !target.closest('.basket')) {
+                        info.opened = false;
+                        config.container.classList.remove('basket--active');
+                    }
+                }
+            };
         },
 
         /**
          * Checks if basket have element, pushing new product object to basket array
-         * Checks if basket is opened, if it's true - render new item now
          *
          * @method addItem
          * @param {Object} item A product object
@@ -169,7 +192,7 @@ var basket = (function() {
             // If we have same product in basket - exit from function
             if (
                 basket.some(function(product) {
-                    return item === product;
+                    return item.id === product.id;
                 })
             ) {
                 notify.showNotify(helperElements.dangerNotify);
@@ -180,9 +203,7 @@ var basket = (function() {
             basket.push(item);
             item.inBasket++;
 
-            if (info.opened) {
-                this.renderBasketElement(item);
-            }
+            localStorage.setItem('basket', JSON.stringify(basket));
         },
 
         /**
@@ -201,11 +222,7 @@ var basket = (function() {
                 }
             });
             // Some AJAX call to save the inBasket field
-            productsData.forEach(function(product) {
-                if (id === product.id) {
-                    product.inBasket = 0;
-                }
-            });
+            localStorage.setItem('basket', JSON.stringify(basket));
 
             this.renderBasketList();
         },
@@ -223,12 +240,14 @@ var basket = (function() {
             var productQuantityInBasket = event.target.previousSibling;
 
             // Some AJAX call to save the inBasket field
-            productsData.forEach(function(product) {
+            basket.forEach(function(product) {
                 if (id === product.id) {
                     product.inBasket++;
                     productQuantityInBasket.innerHTML++;
                 }
             });
+            console.log(basket);
+            localStorage.setItem('basket', JSON.stringify(basket));
         },
 
         /**
@@ -246,7 +265,7 @@ var basket = (function() {
             var productQuantityInBasket = event.target.nextSibling;
 
             //Some AJAX call to save the inBasket field
-            productsData.forEach(function(product) {
+            basket.forEach(function(product) {
                 if (id === product.id) {
                     product.inBasket--;
                     if (product.inBasket === 0) {
@@ -255,6 +274,8 @@ var basket = (function() {
                     productQuantityInBasket.innerHTML--;
                 }
             });
+
+            localStorage.setItem('basket', JSON.stringify(basket));
         },
 
         /**
@@ -297,9 +318,9 @@ var basket = (function() {
                 '</div>' +
                 '</div>' +
                 '</div>' +
-                '<div class="basket__delete-product" onclick="basket.removeItem(' +
+                '<button class="basket__delete-product" onclick="basket.removeItem(' +
                 item.id +
-                ')"></div>';
+                ')"></button>';
 
             return template;
         },

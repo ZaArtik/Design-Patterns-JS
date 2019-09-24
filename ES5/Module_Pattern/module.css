@@ -305,6 +305,7 @@ ul, li  {
 
 .basket__delete-product {
     width: 10%;
+    border: 0;
     background: url('assets/delete-icon.png') no-repeat 50% 50%;
     background-size: 30px;
     margin-left: 10px;
@@ -312,6 +313,7 @@ ul, li  {
     height: 30px;
     cursor: pointer;
     transition: 250ms;
+    outline: none;
 }
 
 .basket__delete-product:hover {
