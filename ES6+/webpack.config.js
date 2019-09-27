@@ -5,6 +5,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin"); // Для того, чтобы создавать отдельный css файл, я так понял этот плагин читает код
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin'); // Для минификации css файлов
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const CopyWepbackPlugin = require('copy-webpack-plugin');
+
+const ASSET_PATH = process.env.ASSET_PATH || '/';
 
 module.exports = {
     entry: {
@@ -42,34 +45,14 @@ module.exports = {
             },
 
             {
-                test: /\.(png|svg|jpg|gif)$/,
-                use: [
-                    'file-loader',
-                    {
-                        loader: 'image-webpack-loader',
-                        options: {
-                            mozjpeg: {
-                                progressive: true,
-                                quality: 65
-                            },
-                            // optipng.enabled: false will disable optipng
-                            optipng: {
-                                enabled: false,
-                            },
-                            pngquant: {
-                                quality: '65-90',
-                                speed: 4
-                            },
-                            gifsicle: {
-                                interlaced: false,
-                            },
-                            // the webp option will enable WEBP
-                            webp: {
-                                quality: 75
-                            }
-                        }
+                test: /\.(png|svg|jp(e*)g|gif)$/,
+                use: [{
+                    loader: 'file-loader',
+                    options: {
+                        limit: 8000,
+                        name: 'assets/[name].[ext]'
                     }
-                ]
+                }]
             },
 
             {
@@ -100,6 +83,7 @@ module.exports = {
         new HtmlWebpackPlugin({
             title: 'Output Management',
             template: './app/src/index.html'
-        })
+        }),
+        new CopyWepbackPlugin([{from: 'app/src/Module_Pattern/assets/', to: 'assets/'}])
     ]
 };

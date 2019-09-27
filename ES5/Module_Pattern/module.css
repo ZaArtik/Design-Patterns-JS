@@ -42,6 +42,7 @@
 
 
 /* Global styles */
+
 * {
     box-sizing: border-box;
 }
@@ -214,10 +215,6 @@ ul, li  {
 .basket__header-wrapper {
     margin-bottom: 40px;
     padding: 25px 15px 0 15px;
-}
-
-.basket__product-list-title {
-
 }
 
 .basket__product-item {

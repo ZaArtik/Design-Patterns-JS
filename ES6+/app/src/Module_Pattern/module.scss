@@ -1,0 +1,333 @@
+// IMPORT STYLES
+@import 'scss/colors.scss';
+
+// SCROLLBAR
+
+::-webkit-scrollbar {
+    width: 12px;
+
+    &-thumb {
+        border-width: 1px 1px 1px 2px;
+        border-color: #777;
+        background-color: #aaa;
+
+        &:hover {
+            border-width: 1px 1px 1px 2px;
+            border-color: #555;
+            background-color: #777;
+        }
+    }
+
+    &-track {
+        border-width: 0;
+
+        &:hover {
+            border-left: solid 1px #aaa;
+            background-color: #eee;
+        }
+    }
+}
+
+// NOTIFY
+
+.notify {
+    position: absolute;
+    left: calc(50% - 150px);
+    top: 50px;
+    width: 300px;
+    transition: 700ms;
+
+    &__info-wrapper {
+        text-align: center;
+        padding: 15px 30px;
+        transition: 700ms;
+    }
+}
+
+// GLOBAL STYLES
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: $dark-font;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    padding: 0;
+    margin: 0;
+}
+
+ul,
+li {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.maincontent {
+    position: relative;
+}
+
+// PRODUCT-LIST
+
+.product-list {
+    padding: 20px;
+
+    &__wrapper {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    &__item {
+        display: flex;
+        flex-direction: column;
+        width: calc((100% - 4%) / 5);
+        margin-left: 1%;
+        margin-bottom: 2%;
+
+        &:first-child {
+            margin-left: 0;
+        }
+
+        &:nth-child(5n + 1) {
+            margin-left: 0;
+        }
+    }
+
+    &__image-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 200px;
+        padding: 10px 0;
+    }
+
+    &__image {
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    &__info-wrapper {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        padding: 20px 30px;
+        border: 1px solid $light-border;
+        text-align: center;
+    }
+
+    &__caption {
+        margin-bottom: 5px;
+    }
+
+    &__ingridients {
+        margin-bottom: 15px;
+        font-size: 14px;
+        color: $light-font;
+    }
+
+    &__btn-wrapper {
+        margin-top: auto;
+    }
+
+    &__price {
+        font-size: 21px;
+        font-weight: bold;
+        color: $light-green;
+        margin-bottom: 15px;
+    }
+
+    &__add-btn {
+        padding: 10px 15px;
+        background: $light-green;
+        border: 1px solid $light-border;
+        color: #ffffff;
+        font-weight: bold;
+        outline: none;
+        cursor: pointer;
+        transition: 350ms;
+
+        &:hover {
+            border: 1px solid #ffffff;
+            background: #509d34;
+            color: #ffe200;
+        }
+    }
+}
+
+// BASKET
+
+.basket {
+    position: fixed;
+    left: -400px;
+    width: 400px;
+    height: 100%;
+    background: $white;
+    box-shadow: 0px 0px 10px -2px rgba(0, 0, 0, 0.75);
+    transition: 350ms;
+    z-index: 10;
+
+    &--active {
+        left: 0;
+    }
+
+    &__icon-wrapper {
+        position: absolute;
+        top: 25px;
+        right: -70px;
+        width: 55px;
+        height: 55px;
+        border-radius: 50%;
+        background: url('assets/basket-icon.png') no-repeat 50% 50%;
+        background-color: $white;
+        background-size: 35px;
+        box-shadow: 0px 0px 10px -2px rgba(0, 0, 0, 0.75);
+        cursor: pointer;
+        transition: 350ms;
+
+        &:hover {
+            background: url('assets/basket-icon-hover.png') no-repeat 50% 50%;
+            background-color: $white;
+            background-size: 35px;
+        }
+    }
+
+    &__product {
+        &-list-wrapper {
+            width: 100%;
+            height: calc(100% - 93px);
+            padding: 0 15px 15px 15px;
+            overflow-y: scroll;
+        }
+
+        &-item {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            min-height: 130px;
+            padding: 10px 5px;
+            border: 1px solid $light-border;
+            margin-bottom: 15px;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        &-image-wrapper {
+            width: 32%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        &-info-wrapper {
+            width: 50%;
+            margin-left: 19px;
+        }
+
+        &-caption {
+            font-size: 18px;
+            text-transform: uppercase;
+        }
+
+        &-ingridients {
+            margin-bottom: 10px;
+            font-size: 14px;
+            color: $light-font;
+        }
+
+        &-price {
+            font-size: 20px;
+            font-weight: bold;
+            color: $light-green;
+        }
+
+        &-controller-wrapper {
+            display: flex;
+            align-items: center;
+            margin-left: 15px;
+            color: $light-font;
+        }
+
+        &-quantity {
+            font-size: 14px;
+            padding: 0 10px;
+        }
+    }
+
+    &__header-wrapper {
+        margin-bottom: 40px;
+        padding: 25px 15px 0 15px;
+    }
+
+    &__image {
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    &__price-info-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__remove-product,
+    &__add-product {
+        width: 20px;
+        height: 20px;
+        background: $white;
+        box-shadow: 0px 0px 7px -2px rgba(0, 0, 0, 0.75);
+        border: 0;
+        border-radius: 50%;
+        outline: none;
+        cursor: pointer;
+        transition: 250ms;
+        color: $light-font;
+
+        &:hover {
+            transform: scale(1.1);
+        }
+    }
+
+    &__delete-product {
+        width: 10%;
+        border: 0;
+        background: url('assets/delete-icon.png') no-repeat 50% 50%;
+        background-size: 30px;
+        margin-left: 10px;
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+        transition: 250ms;
+        outline: none;
+
+        &:hover {
+            background: url('assets/delete-icon-hover.png') no-repeat 50% 50%;
+            background-size: 30px;
+        }
+    }
+}

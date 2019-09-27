@@ -40,7 +40,7 @@ class Singleton {
 
 const btn = document.querySelector('.register-btn');
 let newUser;
-btn.onclick = function (e) {
+btn.onclick = function creeateSingleton(e) {
     /**
      * Some ajax
      */

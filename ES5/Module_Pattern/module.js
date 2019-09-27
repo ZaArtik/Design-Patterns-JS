@@ -246,7 +246,7 @@ var basket = (function() {
                     productQuantityInBasket.innerHTML++;
                 }
             });
-            console.log(basket);
+
             localStorage.setItem('basket', JSON.stringify(basket));
         },
 
