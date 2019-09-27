@@ -7,3 +7,5 @@ In repository i have 2 folders: first folder with ES5 code and second with ES6+ 
 ES6+ Folder
 In app/src you can see 2 main files: index.js and index.html. To see the selected pattern in action you need in index.js import the main file of pattern. Basically it called like DesignPatternName.js. It possible, bacause i decided to use custom elements.
 For each design pattern i have seperate folder which contains 3 main files: Implementation of design pattern, html template in .js format of design pattern, and .scss file with styles.
+
+Most of explanation are in main pattern files in comments.
