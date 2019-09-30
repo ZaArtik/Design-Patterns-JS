@@ -84,6 +84,6 @@ module.exports = {
             title: 'Output Management',
             template: './app/src/index.html'
         }),
-        new CopyWepbackPlugin([{from: 'app/src/Module_Pattern/assets/', to: 'assets/'}])
+        new CopyWepbackPlugin([{from: 'app/src/Basket_Template/assets/', to: 'assets/'}])
     ]
 };

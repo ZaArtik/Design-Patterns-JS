@@ -1,5 +1,5 @@
 // As we don't work with API, import data from our folder
-import productsData from '../products';
+import productsData from '../../Basket_Template/products';
 
 /**
  * I was do the productList like field in global object, because in templates, when i hang

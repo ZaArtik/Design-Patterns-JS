@@ -1,4 +1,4 @@
-const moduleTemplate = `
+const basketTemplate = `
 <div class="maincontent">
     <!-- BASKET SIDEBAR -->
     <aside class="basket">
@@ -20,4 +20,4 @@ const moduleTemplate = `
 </div>
 `;
 
-export default moduleTemplate;
+export default basketTemplate;
