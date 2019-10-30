@@ -1,6 +1,6 @@
 // Importing styles, templates and other helper modules
-import '../Basket_Template/basket.scss';
-import basketTemplate from '../Basket_Template/basket-template';
+import '../templates/Basket_Template/basket.scss';
+import basketTemplate from '../templates/Basket_Template/basket-template';
 
 // Importing modules
 import Basket from './modules/basket';

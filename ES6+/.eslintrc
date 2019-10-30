@@ -11,12 +11,16 @@
         "linebreak-style": 0,
         "global-require": 0,
         "no-tabs": ["error", { "allowIndentationTabs": true }],
-        "indent": ["error", 4],
+        "indent": 0,
         "comma-dangle": ["error", "never"],
         "wrap-iife": ["error", "inside"],
         "space-before-function-paren":["error", "never"],
-        "operator-linebreak": ["error", "after"],
+        "operator-linebreak": 0,
         "arrow-parens": ["error", "as-needed"],
-        "no-param-reassign": ["error", { "props": false }]
+        "no-param-reassign": ["error", { "props": false }],
+        "no-restricted-syntax": ["error", "WithStatement", "BinaryExpression[operator='in']"],
+        "no-underscore-dangle": ["error", {"allowAfterThis": true}],
+        "class-methods-use-this": 0,
+        "import/prefer-default-export": 0
     }
 }

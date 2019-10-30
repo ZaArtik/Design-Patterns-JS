@@ -1,0 +1,39 @@
+@import '../Basket_Template/scss/colors.scss';
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 55px;
+    margin-bottom: 25px;
+    -webkit-box-shadow: 0px -3px 37px -12px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px -3px 37px -12px rgba(0,0,0,0.75);
+    box-shadow: 0px -3px 37px -12px rgba(0,0,0,0.75);
+
+    &__logo-wrapper {
+        width: 75px;
+    }
+
+    &__logo {
+        max-width: 100%;
+    }
+
+    &__menu {
+        display: flex;
+
+        &-item {
+
+        }
+
+        &-link {
+            padding: 5px 10px;
+            font-size: 21px;
+            color: $light-font;
+            transition: 300ms;
+
+            &:hover {
+                color: $dark-font;
+            }
+        }
+    }
+}
